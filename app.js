@@ -5,7 +5,6 @@ const loading = document.createElement("h2");
 document.body.appendChild(loading);
 loading.textContent = "Loading ...";
 loading.style.textAlign = "center";
-
 // create product function
 function createProduct(title, image, price) {
   const product = document.createElement("div");
@@ -16,11 +15,9 @@ function createProduct(title, image, price) {
   product.innerHTML += `<img src="${image}" alt="${title} image" class="product-image" />`;
   product.innerHTML += `<h3 class="product-price" >Price: ${price}</h3>`;
 }
-
-let productsArr = [];
-
 // products fetch
 const API = "https://fakestoreapi.com/products";
+let productsArr = [];
 (async function getProducts() {
   try {
     const response = await fetch(API);
@@ -43,7 +40,6 @@ const API = "https://fakestoreapi.com/products";
     loading.remove();
   }
 })();
-
 // search logic
 let filteredProducts = [];
 searchBar.addEventListener("input", (e) => {
@@ -56,5 +52,4 @@ searchBar.addEventListener("input", (e) => {
     const { title, image, price } = filteredProducts[i];
     createProduct(title, image, price);
   }
-  console.log(filteredProducts);
 });
